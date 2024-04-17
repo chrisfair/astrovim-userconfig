@@ -13,7 +13,7 @@ return {
     opts = {
       suggestion = {
         keymap = {
-          accept = "C-l>",
+          accept = "<C-l>",
           accept_word = false,
           accept_line = false,
           next = "<C-.>",
@@ -23,4 +23,7 @@ return {
       },
     },
   },
+  { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.go" },
 }
