@@ -6,7 +6,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.colorscheme.catppuccin", enabled = true },
+  { import = "astrocommunity.colorscheme.tokyonight-nvim", enabled = true },
   { import = "astrocommunity.completion.copilot-lua" },
   {
     "copilot.lua",
