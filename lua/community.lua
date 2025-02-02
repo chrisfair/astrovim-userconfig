@@ -23,8 +23,4 @@ return {
       },
     },
   },
-  { import = "astrocommunity.pack.rust" },
-  { import = "astrocommunity.pack.python" },
-  { import = "astrocommunity.pack.go" },
-  { import = "astrocommunity.pack.zig" },
 }
