@@ -6,7 +6,10 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.colorscheme.tokyonight-nvim", enabled = true },
+  { import = "astrocommunity.pack.go" },
+  { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.zig" },
+
   { import = "astrocommunity.completion.copilot-lua" },
   {
     "copilot.lua",
