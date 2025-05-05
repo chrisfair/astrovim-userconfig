@@ -4,7 +4,6 @@ return {
     config = function()
       require("osc52").setup{
         max_length = 0, -- Max length of text to copy
-        silent = false, -- Don't print message when copying
         trim = true, -- Trim text to fit in the clipboard
         silent = false, -- Don't print message when copying
         tmux_passthrough = true; -- Use tmux passthrough
