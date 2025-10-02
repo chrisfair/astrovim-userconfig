@@ -1,16 +1,14 @@
 return {
   {
-    "LazyVim/LazyVim",
+    "AstroNvim/astrocore",  -- ✅ patch AstroCore, not LazyVim itself
     opts = function(_, opts)
-      -- Safe toggle (defaults to false)
       local use_ghostty = vim.g.use_ghostty_theme == true
 
-      -- Only try Ghostty if toggle is on
       if use_ghostty then
         local ghostty_conf = vim.fn.expand("~/.config/ghostty/config")
         local theme = nil
-
         local ok, file = pcall(io.open, ghostty_conf, "r")
+
         if ok and file then
           for line in file:lines() do
             local t = line:match("^theme%s*=%s*(.+)")
@@ -28,14 +26,8 @@ return {
           gruvbox = "gruvbox",
         }
 
-        if theme and map[theme] then
-          opts.colorscheme = map[theme]
-        else
-          -- fall back safely to AstroNvim’s built-in theme
-          opts.colorscheme = "astrodark"
-        end
+        opts.colorscheme = map[theme] or "astrodark"
       else
-        -- Always safe fallback
         opts.colorscheme = "astrodark"
       end
     end,
