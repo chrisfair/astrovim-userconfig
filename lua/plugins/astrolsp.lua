@@ -38,12 +38,17 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
-      -- "pyright"
+      "gdscript",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      gdscript = {
+        cmd = { "nc", "localhost", "6005" },
+        filetypes = { "gd", "gdscript", "gdscript3" },
+        root_dir = require("lspconfig.util").root_pattern("project.godot", ".git"),
+      },
     },
     -- customize how language servers are attached
     handlers = {
