@@ -1,8 +1,8 @@
 return {
   {
-    "AstroNvim/astrocore",  -- ✅ patch AstroCore, not LazyVim itself
+    "AstroNvim/astroui",  -- ✅ patch AstroUI, not AstroCore (colorscheme is an AstroUI option)
     opts = function(_, opts)
-      local use_ghostty = vim.g.use_ghostty_theme == true
+      local use_ghostty = vim.g.use_ghostty_theme == true or vim.env.TERM == "xterm-ghostty"
 
       if use_ghostty then
         local ghostty_conf = vim.fn.expand("~/.config/ghostty/config")
