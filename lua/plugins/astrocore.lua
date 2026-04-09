@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -32,11 +30,25 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
+        clipboard = "unnamedplus", -- Use system clipboard for all cut, copy, and paste operations
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
+
+        -- Enable OSC52 clipboard for SSH sessions to seamlessly sync clipboard with local machine
+        clipboard = (os.getenv "SSH_CLIENT" ~= nil or os.getenv "SSH_TTY" ~= nil) and {
+          name = "OSC 52",
+          copy = {
+            ["+"] = require("vim.ui.clipboard.osc52").copy "+",
+            ["*"] = require("vim.ui.clipboard.osc52").copy "*",
+          },
+          paste = {
+            ["+"] = require("vim.ui.clipboard.osc52").paste "+",
+            ["*"] = require("vim.ui.clipboard.osc52").paste "*",
+          },
+        } or nil,
       },
     },
     -- Mappings can be configured through AstroCore as well.
