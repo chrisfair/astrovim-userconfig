@@ -48,7 +48,12 @@ return {
             ["+"] = require("vim.ui.clipboard.osc52").paste "+",
             ["*"] = require("vim.ui.clipboard.osc52").paste "*",
           },
-        } or nil,
+        } or {
+            -- Only use unnamedplus when LOCAL
+            name = "system",
+            copy = { ["+"] = "wl-copy", ["*"] = "wl-copy" },
+            paste = { ["+"] = "wl-paste", ["*"] = "wl-paste" },
+          },
       },
     },
     -- Mappings can be configured through AstroCore as well.
